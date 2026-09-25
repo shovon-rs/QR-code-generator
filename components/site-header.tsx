@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { QrCode, ArrowUpRight } from "lucide-react";
+import { QrCode } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   return (
     <>
-      <header className="bg-card/90 fixed inset-x-0 top-0 z-40 h-20 border-b shadow-sm backdrop-blur-xl">
+      <header className="bg-background fixed inset-x-0 top-0 z-40 h-16 border-b">
         <a
           href="#main-content"
           className="focus:bg-card sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4"
@@ -16,36 +16,28 @@ export function SiteHeader() {
           <Link
             href="/"
             aria-label="QR Code Generator home"
-            className="focus-visible:ring-ring flex items-center gap-3 rounded-lg outline-none focus-visible:ring-2"
+            className="focus-visible:ring-ring flex items-center gap-2 rounded-md outline-none focus-visible:ring-2"
           >
-            <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-xl">
-              <QrCode className="size-6" aria-hidden />
-            </span>
-            <span className="text-lg font-semibold tracking-tight">
-              QR<span className="text-muted-foreground font-normal"> Studio</span>
-            </span>
+            <QrCode className="text-primary size-6" aria-hidden />
+            <span className="text-base font-semibold tracking-tight">QR Studio</span>
           </Link>
-          <div className="flex items-center gap-5 sm:gap-8">
+          <div className="flex items-center gap-4 sm:gap-6">
             <nav
               aria-label="Main navigation"
-              className="hidden items-center gap-7 text-xs font-medium sm:flex"
+              className="text-muted-foreground hidden items-center gap-6 text-sm sm:flex"
             >
               <Link href="/#studio" className="hover:text-primary transition-colors">
                 Generator
               </Link>
               <Link href="/#history" className="text-muted-foreground hover:text-primary transition-colors">
-                Your collection
+                History
               </Link>
             </nav>
-            <span className="hidden items-center gap-1 rounded-full border px-3 py-1.5 text-[10px] font-medium tracking-wider uppercase lg:flex">
-              Free to create
-              <ArrowUpRight className="size-3" aria-hidden />
-            </span>
             <ThemeToggle />
           </div>
         </div>
       </header>
-      <div className="h-20 shrink-0" aria-hidden="true" />
+      <div className="h-16 shrink-0" aria-hidden="true" />
     </>
   );
 }

@@ -105,14 +105,14 @@ export function QrCustomizer() {
   };
 
   return (
-    <Card className="border-2 border-blue-100 shadow-lg dark:border-blue-900/50">
-      <CardHeader className="bg-tint-blue py-4">
-        <CardTitle className="flex items-center gap-2 text-blue-900 dark:text-blue-100">
-          <Palette className="size-5 text-blue-600 dark:text-blue-400" aria-hidden />
+    <Card className="studio-panel">
+      <CardHeader className="pb-1">
+        <CardTitle className="text-foreground flex items-center gap-2">
+          <Palette className="text-primary size-5" aria-hidden />
           <h2>Customize</h2>
         </CardTitle>
-        <CardDescription className="text-blue-700 dark:text-blue-300">
-          Changes apply live to the current QR code and to new ones.
+        <CardDescription className="text-muted-foreground">
+          Make it yours. Every detail, just right.
         </CardDescription>
         <CardAction>
           <Button variant="ghost" size="sm" onClick={reset} aria-label="Reset customization">
@@ -121,7 +121,7 @@ export function QrCustomizer() {
           </Button>
         </CardAction>
       </CardHeader>
-      <CardContent className="space-y-5">
+      <CardContent className="space-y-7">
         <div className="grid gap-4 sm:grid-cols-2">
           <ColorField
             label="Foreground"

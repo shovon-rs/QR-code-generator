@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { QrCode, ScanLine, LockKeyhole } from "lucide-react";
 import { toast } from "sonner";
 
 import { QrCustomizer } from "@/components/qr/qr-customizer";
@@ -110,13 +111,65 @@ export function QrApp() {
   }, [clearItems]);
 
   return (
-    <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 [&>*]:min-w-0">
-      <div className="space-y-6">
-        <QrGeneratorForm onGenerate={handleGenerate} />
-        {current && <QrResultCard item={current} />}
-        <QrCustomizer />
+    <div id="studio" className="scroll-mt-28 space-y-8">
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <p className="text-xs font-semibold tracking-[0.16em] uppercase">Your creative workspace</p>
+        <span className="text-muted-foreground flex items-center gap-2 text-xs">
+          <span className="bg-primary size-1.5 rounded-full" /> All changes saved locally
+        </span>
       </div>
-      <div className="lg:sticky lg:top-6">
+      <div className="grid items-start gap-6 lg:grid-cols-[1.25fr_1fr] [&>*]:min-w-0">
+        <div className="space-y-6">
+          <QrGeneratorForm onGenerate={handleGenerate} />
+          <QrCustomizer />
+        </div>
+        <div className="space-y-4 lg:sticky lg:top-28">
+          {current ? (
+            <QrResultCard item={current} />
+          ) : (
+            <section
+              className="studio-panel bg-card overflow-hidden rounded-2xl border p-6 sm:p-8"
+              aria-label="QR code preview"
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="font-semibold">Your QR code</h2>
+                <span className="bg-muted text-muted-foreground rounded-full px-3 py-1 text-[10px] font-medium tracking-wider uppercase">
+                  Preview
+                </span>
+              </div>
+              <p className="text-muted-foreground mt-2 text-sm">A new connection starts here.</p>
+              <div className="preview-stage my-7 flex min-h-72 items-center justify-center rounded-xl border">
+                <div className="preview-placeholder bg-card relative flex size-48 items-center justify-center rounded-2xl border shadow-xl shadow-black/5">
+                  <QrCode className="text-foreground/15 size-32" strokeWidth={1} aria-hidden />
+                  <span className="bg-primary text-primary-foreground absolute flex size-12 items-center justify-center rounded-xl shadow-lg">
+                    <ScanLine className="size-6" aria-hidden />
+                  </span>
+                </div>
+              </div>
+              <p className="text-center text-sm font-medium">Ready when you are</p>
+              <p className="text-muted-foreground mx-auto mt-2 max-w-64 text-center text-xs leading-6">
+                Enter your URL and generate a code.
+                <br />
+                Your finished design will appear right here.
+              </p>
+              <div className="mt-7 flex justify-center gap-2 border-t pt-5">
+                {["PNG & SVG", "High resolution", "No watermark"].map((label) => (
+                  <span
+                    key={label}
+                    className="bg-muted text-muted-foreground rounded-md px-2 py-1 text-[10px]"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+          <p className="text-muted-foreground flex items-center justify-center gap-2 text-[11px]">
+            <LockKeyhole className="size-3" aria-hidden /> Generated privately, right in your browser
+          </p>
+        </div>
+      </div>
+      <div id="history" className="scroll-mt-28">
         <QrHistory
           items={items}
           hydrated={hydrated}

@@ -41,16 +41,12 @@ export function QrResultCard({ item }: { item: QrItem }) {
   };
 
   return (
-    <Card
-      className="border-2 border-green-100 shadow-lg dark:border-green-900/50"
-      aria-live="polite"
-      data-testid="qr-result"
-    >
-      <CardHeader className="bg-tint-green py-4">
-        <CardTitle className="text-green-900 dark:text-green-100">
+    <Card className="studio-panel" aria-live="polite" data-testid="qr-result">
+      <CardHeader className="pb-1">
+        <CardTitle className="text-foreground">
           <h2>Generated QR Code</h2>
         </CardTitle>
-        <CardDescription className="break-all text-green-700 dark:text-green-300">
+        <CardDescription className="text-muted-foreground break-all">
           Scan this QR code to visit:{" "}
           <a
             href={item.url}
@@ -63,8 +59,8 @@ export function QrResultCard({ item }: { item: QrItem }) {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex justify-center">
-          <div className="rounded-xl border-2 border-gray-100 bg-white p-6 shadow-md dark:border-white/10">
+        <div className="preview-stage flex min-h-72 items-center justify-center rounded-xl border py-6">
+          <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element -- data URL, nothing to optimise */}
             <img
               src={svgToDataUrl(item.svg)}

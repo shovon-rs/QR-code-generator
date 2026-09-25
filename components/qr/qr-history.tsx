@@ -31,13 +31,13 @@ export function QrHistory({ items, hydrated, selectedId, onSelect, onDelete, onC
   const count = items.length;
 
   return (
-    <Card className="border-2 border-violet-100 shadow-lg dark:border-violet-900/50" data-testid="qr-history">
-      <CardHeader className="bg-tint-violet py-4">
-        <CardTitle className="flex items-center gap-2 text-violet-900 dark:text-violet-100">
-          <History className="size-5 text-violet-600 dark:text-violet-400" aria-hidden />
+    <Card className="studio-panel" data-testid="qr-history">
+      <CardHeader className="pb-1">
+        <CardTitle className="text-foreground flex items-center gap-2">
+          <History className="text-primary size-5" aria-hidden />
           <h2>QR Code History</h2>
         </CardTitle>
-        <CardDescription className="text-violet-700 dark:text-violet-300" aria-live="polite">
+        <CardDescription className="text-muted-foreground" aria-live="polite">
           {count === 0
             ? "Your generated QR codes will appear here."
             : `${count} QR code${count === 1 ? "" : "s"} generated`}
@@ -46,7 +46,7 @@ export function QrHistory({ items, hydrated, selectedId, onSelect, onDelete, onC
           <CardAction>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-violet-800 dark:text-violet-200">
+                <Button variant="ghost" size="sm" className="text-muted-foreground">
                   <Trash2 aria-hidden />
                   Clear
                 </Button>
@@ -71,11 +71,11 @@ export function QrHistory({ items, hydrated, selectedId, onSelect, onDelete, onC
       <CardContent>
         {!hydrated ? (
           <div className="flex justify-center py-12" aria-label="Loading history">
-            <Loader2 className="size-6 animate-spin text-violet-500" aria-hidden />
+            <Loader2 className="text-primary size-6 animate-spin" aria-hidden />
           </div>
         ) : count === 0 ? (
-          <div className="flex flex-col items-center gap-4 py-12 text-center">
-            <span className="flex size-12 items-center justify-center rounded-full bg-violet-100 text-violet-600 dark:bg-violet-950 dark:text-violet-300">
+          <div className="bg-background/60 flex flex-col items-center gap-3 rounded-xl border border-dashed py-8 text-center">
+            <span className="bg-secondary text-primary flex size-12 items-center justify-center rounded-full">
               <History className="size-6" aria-hidden />
             </span>
             <p className="text-sm text-slate-600 dark:text-slate-300">

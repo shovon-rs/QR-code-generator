@@ -30,10 +30,7 @@ export function DownloadMenu({ item }: { item: QrItem }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="secondary"
-          className="w-full border border-sky-200 bg-sky-100 font-medium text-sky-800 hover:bg-sky-200 dark:border-sky-900 dark:bg-sky-950 dark:text-sky-200 dark:hover:bg-sky-900"
-        >
+        <Button variant="default" className="studio-action h-12 w-full rounded-xl">
           <Download aria-hidden />
           Download QR Code
           <ChevronDown className="opacity-60" aria-hidden />

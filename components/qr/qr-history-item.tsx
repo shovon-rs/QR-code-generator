@@ -38,10 +38,8 @@ export function QrHistoryItem({ item, selected, onSelect, onDelete }: Props) {
   return (
     <li
       className={cn(
-        "flex items-center gap-3 rounded-xl border-2 bg-gradient-to-r from-slate-50 to-blue-50/60 p-3 transition-colors sm:gap-4 sm:p-4 dark:from-slate-900/60 dark:to-blue-950/40",
-        selected
-          ? "border-blue-400 dark:border-blue-500"
-          : "border-blue-100 hover:border-blue-200 dark:border-white/10 dark:hover:border-white/20",
+        "bg-background/60 flex flex-wrap items-center gap-3 rounded-xl border p-3 transition-colors sm:gap-4 sm:p-4",
+        selected ? "border-primary bg-secondary/30" : "border-border hover:border-primary/40",
       )}
     >
       <button
@@ -75,7 +73,7 @@ export function QrHistoryItem({ item, selected, onSelect, onDelete }: Props) {
         </IconAction>
         <IconAction
           label="Download PNG"
-          className="bg-violet-100 text-violet-800 hover:bg-violet-200 dark:bg-violet-950 dark:text-violet-200 dark:hover:bg-violet-900"
+          className="bg-secondary text-primary hover:bg-accent"
           onClick={() => handleDownload(item, "png")}
         >
           <Download aria-hidden />
